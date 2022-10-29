@@ -45,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
       // FILL IN HERE TO RETURN OVERDUE ITEMS
       return await Todo.findAll({
         where: {
-          dueDate: { [Op.lt]: new Date(),completed: false },
+          dueDate: { [Op.lt]: new Date().toLocaleDateString("en-CA") },
         },
       });
     }
