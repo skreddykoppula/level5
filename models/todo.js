@@ -45,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
       // FILL IN HERE TO RETURN OVERDUE ITEMS
       return await Todo.findAll({
         where: {
-          dueDate: { [Op.lt]: new Date().toLocaleDateString("en-CA") },
+          dueDate: { [Op.lt]: new Date(),completed: false },
         },
       });
     }
@@ -71,7 +71,7 @@ module.exports = (sequelize, DataTypes) => {
     static async markAsComplete(id) {
       // FILL IN HERE TO MARK AN ITEM AS COMPLETE
       await Todo.update(
-        { completed: true },
+        { completed: false },
         {
           where: {
             id: id,
